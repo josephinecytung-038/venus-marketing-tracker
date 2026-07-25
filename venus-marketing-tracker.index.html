@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Venus AI | Digital Marketing & Lead Gen Optimization</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --purple:#6b2fa0; --pink:#d4568a;
+    --grad:linear-gradient(135deg,#6b2fa0 0%,#d4568a 100%);
+    --grad-soft:linear-gradient(135deg,rgba(107,47,160,.08) 0%,rgba(212,86,138,.08) 100%);
+    --bg:#fafafa; --surface:#fff; --text:#1a1a2e; --muted:#6e6e8a;
+    --border:rgba(107,47,160,.12);
+    --done-bg:#f0faf4; --done-text:#1a7c45; --done-border:#a8e0bf;
+    --up-bg:#f5f0ff;  --up-text:#6b2fa0;   --up-border:#c4a8e8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+
+  /* Header */
+  header{background:var(--surface);border-bottom:1px solid var(--border);padding:0 48px;position:sticky;top:0;z-index:200;}
+  .header-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:68px;}
+  .logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+  .logo-v{width:36px;height:36px;background:var(--grad);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;font-weight:600;font-size:20px;color:#fff;}
+  .logo-text{font-family:'DM Sans',sans-serif;font-size:22px;font-weight:600;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .hbadge{display:flex;align-items:center;gap:8px;background:var(--grad-soft);border:1px solid var(--border);padding:6px 14px;border-radius:20px;font-size:12px;font-weight:500;color:var(--purple);}
+  .hbadge .dot{width:6px;height:6px;background:var(--pink);border-radius:50%;animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+  /* Hero */
+  .hero{background:var(--surface);padding:56px 48px 48px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:-80px;right:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(212,86,138,.08) 0%,transparent 70%);border-radius:50%;}
+  .hero::after{content:'';position:absolute;bottom:-60px;left:-60px;width:300px;height:300px;background:radial-gradient(circle,rgba(107,47,160,.06) 0%,transparent 70%);border-radius:50%;}
+  .hero-inner{max-width:1280px;margin:0 auto;position:relative;}
+  .eyebrow{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:10px;}
+  .hero h1{font-family:'DM Sans',sans-serif;font-size:clamp(28px,4vw,46px);font-weight:700;line-height:1.15;color:var(--text);margin-bottom:6px;letter-spacing:-.02em;}
+  .hero h1 em{font-style:italic;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .hero-sub{font-size:15px;font-weight:500;color:var(--muted);margin-bottom:22px;letter-spacing:.04em;text-transform:uppercase;}
+
+  /* Core sections — bubble cards */
+  .core-sections{
+    display:flex;flex-wrap:wrap;gap:16px;
+    margin-bottom:32px;
+  }
+  .cs-group{
+    display:flex;flex-direction:column;gap:12px;
+    background:var(--grad-soft);
+    border:1px solid rgba(107,47,160,.18);
+    border-radius:20px;
+    padding:20px 22px;
+    min-width:180px;
+    position:relative;
+    overflow:hidden;
+  }
+  .cs-group::before{
+    content:'';position:absolute;top:-20px;right:-20px;
+    width:80px;height:80px;
+    background:radial-gradient(circle,rgba(212,86,138,.12) 0%,transparent 70%);
+    border-radius:50%;pointer-events:none;
+  }
+  .cs-group-label{
+    font-size:13px;font-weight:700;letter-spacing:.08em;
+    text-transform:uppercase;
+    background:var(--grad);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    background-clip:text;
+    line-height:1.3;
+  }
+  .cs-items{display:flex;flex-wrap:wrap;gap:6px;}
+  .cs-tag{
+    display:inline-flex;align-items:center;gap:4px;
+    font-size:12px;font-weight:700;letter-spacing:.03em;
+    padding:6px 14px;border-radius:20px;
+    background:var(--grad);
+    color:#fff;white-space:nowrap;
+  }
+  .cs-tag-full{ display:none; }
+  .cs-dim{font-weight:500;color:rgba(255,255,255,.75);font-size:11px;}
+  .cs-dim{font-weight:400;color:var(--muted);font-size:11.5px;}
+  .cs-row-break{width:100%;height:0;}
+  .stats-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;}
+  .stat-pill{
+    font-size:13px;font-weight:700;letter-spacing:.03em;
+    color:#fff;background:var(--grad);
+    padding:7px 20px;border-radius:20px;
+    white-space:nowrap;
+  }
+
+  /* Hero date picker */
+  .updated-box{
+    display:flex;align-items:center;gap:8px;
+    font-size:13px;font-weight:700;letter-spacing:.03em;
+    color:#fff;background:var(--grad);
+    padding:7px 20px;border-radius:20px;
+    white-space:nowrap;
+  }
+  .updated-box strong{color:#fff;font-weight:700;}
+  .hero-date-btn{
+    display:inline-flex;align-items:center;gap:6px;
+    background:var(--grad-soft);border:1px solid var(--border);
+    padding:5px 12px;border-radius:8px;cursor:pointer;
+    font-size:12px;font-weight:600;color:var(--purple);
+    font-family:'DM Sans',sans-serif;transition:.15s;white-space:nowrap;
+  }
+  .hero-date-btn:hover{border-color:var(--purple);background:rgba(107,47,160,.14);}
+  .hero-date-btn svg{opacity:.7;}
+
+  /* View tabs */
+  .view-tabs{background:var(--surface);border-bottom:2px solid var(--border);padding:0 48px;}
+  .view-tabs-inner{max-width:1280px;margin:0 auto;display:flex;gap:4px;}
+  .view-tab{
+    padding:16px 28px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;
+    color:var(--muted);border:none;background:none;cursor:pointer;
+    border-bottom:3px solid transparent;transition:.18s;letter-spacing:.02em;
+    margin-bottom:-2px;
+  }
+  .view-tab:hover{color:var(--purple);background:var(--grad-soft);}
+  .view-tab.active{color:var(--purple);border-bottom-color:var(--purple);background:var(--grad-soft);}
+
+  /* Channel group */
+  .channel-section{margin-bottom:8px;animation:fadeUp .4s ease both;}
+  .channel-header{display:flex;align-items:center;gap:12px;padding:14px 18px;border:1px solid var(--border);border-radius:12px;cursor:pointer;background:var(--surface);transition:.18s;user-select:none;}
+  .channel-header:hover{border-color:rgba(107,47,160,.25);background:var(--grad-soft);}
+  .channel-header.open{border-radius:12px 12px 0 0;border-bottom-color:transparent;}
+  .channel-icon{width:34px;height:34px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .channel-icon svg{width:16px;height:16px;fill:none;stroke:#fff;stroke-width:2;}
+  .channel-name{font-family:'DM Sans',sans-serif;font-size:22px;font-weight:500;color:var(--text);flex:1;}
+  .channel-count{font-size:12px;font-weight:500;color:var(--muted);background:var(--grad-soft);border:1px solid var(--border);padding:3px 10px;border-radius:12px;}
+  .channel-chevron{font-size:14px;color:var(--muted);transition:transform .25s;margin-left:6px;}
+  .channel-body{display:none;border:1px solid var(--border);border-top:none;border-radius:0 0 12px 12px;padding:12px;background:var(--surface);}
+  .channel-body.open{display:block;}
+
+  /* Sub-group inside project */
+  .sub-group{margin-bottom:8px;border-radius:10px;overflow:hidden;border:1px solid var(--border);}
+  .sub-group-header{display:flex;align-items:center;gap:10px;padding:10px 16px;cursor:pointer;background:var(--grad-soft);transition:.15s;user-select:none;}
+  .sub-group-header:hover{background:rgba(107,47,160,.1);}
+  .sub-group-header.open{border-radius:10px 10px 0 0;}
+  .sub-group-label{font-size:13px;font-weight:600;color:var(--purple);flex:1;}
+  .sub-group-count{font-size:11px;font-weight:500;color:var(--muted);background:var(--surface);border:1px solid var(--border);padding:2px 8px;border-radius:10px;}
+  .sub-group-chev{font-size:11px;color:var(--muted);transition:transform .22s;}
+  .sub-group-body{display:none;padding:10px;background:var(--surface);}
+  .sub-group-body.open{display:block;}
+
+  @media(max-width:768px){.view-tabs{padding-left:20px;padding-right:20px;}}
+  .legend{background:var(--surface);border-bottom:1px solid var(--border);padding:14px 48px;}
+  .legend-inner{max-width:1280px;margin:0 auto;display:flex;gap:24px;flex-wrap:wrap;align-items:center;font-size:13.5px;color:var(--text);font-weight:500;}
+  .legend-tip{margin-left:auto;font-size:11px;color:var(--pink);font-style:italic;}
+
+  /* Filters */
+  .filters-bar{background:var(--surface);padding:16px 48px;border-bottom:1px solid var(--border);position:sticky;top:68px;z-index:90;}
+  .filters-inner{max-width:1280px;margin:0 auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+  .filter-label{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text);margin-right:4px;}
+  .filter-sep{width:1px;background:var(--border);height:24px;margin:0 8px;}
+  .filter-btn{padding:7px 18px;border-radius:20px;border:1px solid var(--border);background:transparent;font-family:'DM Sans',sans-serif;font-size:13.5px;font-weight:500;color:var(--muted);cursor:pointer;transition:.18s;}
+  .filter-btn:hover{border-color:var(--purple);color:var(--purple);}
+  .filter-btn.active{background:var(--grad);border-color:transparent;color:#fff;}
+
+  /* Main */
+  main{max-width:1280px;margin:0 auto;padding:40px 48px;}
+
+  /* Month section */
+  .month-section{margin-bottom:50px;animation:fadeUp .4s ease both;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+  .month-header{display:flex;align-items:baseline;gap:14px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border);}
+  .month-title{font-family:'DM Sans',sans-serif;font-size:30px;font-weight:500;color:var(--text);letter-spacing:-.01em;}
+  .month-bar{height:3px;background:var(--grad);width:40px;border-radius:2px;margin-top:5px;}
+  .month-count{font-size:12px;font-weight:500;color:var(--muted);background:var(--grad-soft);border:1px solid var(--border);padding:3px 10px;border-radius:12px;}
+
+  /* Status group header */
+  .status-group-wrap{margin-bottom:40px;animation:fadeUp .35s ease both;}
+  .status-group-header{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:10px;border-bottom:1px dashed var(--border);}
+  .status-group-count{font-size:12px;color:var(--muted);font-weight:500;}
+
+  /* Grid — single column list */
+  .campaigns-grid{display:flex;flex-direction:column;gap:10px;}
+
+  /* Card — horizontal list style */
+  .campaign-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 24px;transition:.22s;position:relative;overflow:visible;display:grid;grid-template-columns:1fr auto;grid-template-rows:auto auto;align-items:start;gap:0 16px;}
+  .campaign-card::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:var(--grad);border-radius:12px 0 0 12px;opacity:0;transition:.22s;}
+  .campaign-card:hover{border-color:rgba(107,47,160,.22);box-shadow:0 4px 20px rgba(107,47,160,.07);transform:translateX(2px);}
+  .campaign-card:hover::before{opacity:1;}
+  .campaign-card.highlight{background:linear-gradient(135deg,rgba(107,47,160,.03) 0%,rgba(212,86,138,.03) 100%);border-color:rgba(212,86,138,.22);}
+  .campaign-card.highlight::before{opacity:1;}
+
+  .card-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:6px;grid-column:1/-1;}
+  .card-title{font-size:14.5px;font-weight:600;color:var(--text);line-height:1.4;flex:1;}
+
+  /* Card meta row — date + channels + notes all inline */
+  .card-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px;grid-column:1/-1;}
+
+  /* Status badge */
+  .status-wrapper{position:relative;flex-shrink:0;}
+  .status-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:600;letter-spacing:.04em;white-space:nowrap;cursor:pointer;user-select:none;transition:opacity .15s,transform .1s;}
+  .status-badge:hover{opacity:.8;transform:scale(.97);}
+  .status-badge:active{transform:scale(.93);}
+  .status-badge .bdot{width:5px;height:5px;border-radius:50%;}
+  .status-badge .chev{font-size:8px;margin-left:2px;opacity:.6;}
+  .s-done{background:var(--done-bg);color:var(--done-text);border:1px solid var(--done-border);}
+  .s-done .bdot{background:var(--done-text);}
+  .s-up{background:var(--up-bg);color:var(--up-text);border:1px solid var(--up-border);}
+  .s-up .bdot{background:var(--up-text);}
+
+  /* Status popup */
+  .status-popup{position:absolute;top:calc(100% + 6px);right:0;z-index:300;background:var(--surface);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 28px rgba(107,47,160,.13);padding:5px;min-width:130px;display:none;}
+  .status-popup.open{display:block;}
+  .popup-option{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:7px;cursor:pointer;font-size:12.5px;font-weight:500;color:var(--text);transition:.12s;}
+  .popup-option:hover{background:var(--grad-soft);}
+  .pdot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+
+  /* Card date inline */
+  .card-date{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:500;color:var(--muted);background:var(--bg);border:1px solid var(--border);padding:2px 9px;border-radius:20px;white-space:nowrap;}
+  .card-date svg{opacity:.5;flex-shrink:0;}
+
+  /* Channels inline */
+  .channels-row{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;}
+  .ctag{font-size:11px;font-weight:500;padding:2px 9px;border-radius:6px;background:var(--grad-soft);color:var(--purple);border:1px solid rgba(107,47,160,.14);}
+
+  /* Notes inline */
+  .card-notes{font-size:12.5px;color:var(--muted);line-height:1.6;border-top:1px solid var(--border);padding-top:8px;margin-top:2px;}
+  .card-notes-inline{font-size:12px;color:var(--muted);font-style:italic;padding-left:4px;border-left:2px solid var(--border);}
+
+  /* Footer */
+  footer{background:var(--surface);border-top:1px solid var(--border);padding:22px 48px;margin-top:16px;}
+  .footer-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+  .footer-note{font-size:12px;color:var(--muted);}
+
+  /* AIS Events */
+  .ais-section{margin-bottom:10px;animation:fadeUp .4s ease both;}
+  .ais-header{display:flex;align-items:center;gap:12px;padding:16px 20px;border:1px solid var(--border);border-radius:12px;cursor:pointer;background:var(--surface);transition:.18s;user-select:none;}
+  .ais-header:hover{border-color:rgba(107,47,160,.25);background:var(--grad-soft);}
+  .ais-header.open{border-radius:12px 12px 0 0;border-bottom-color:transparent;}
+  .ais-icon{width:38px;height:38px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+  .ais-name{font-family:'DM Sans',sans-serif;font-size:22px;font-weight:500;color:var(--text);flex:1;}
+  .ais-date{font-size:14px;font-weight:700;color:#fff;background:var(--grad);border:none;padding:6px 18px;border-radius:20px;letter-spacing:.03em;}
+  .ais-progress{font-size:14px;font-weight:700;color:#fff;background:var(--grad);border:none;padding:6px 18px;border-radius:20px;letter-spacing:.03em;}
+  .ais-chevron{font-size:14px;color:var(--muted);transition:transform .25s;margin-left:4px;}
+  .ais-body{display:none;border:1px solid var(--border);border-top:none;border-radius:0 0 12px 12px;background:var(--surface);overflow:hidden;}
+  .ais-body.open{display:block;}
+  .ais-deliverable{font-size:13.5px;font-weight:500;color:var(--text);}
+  .ais-num{width:24px;height:24px;border-radius:50%;background:var(--grad-soft);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--purple);flex-shrink:0;}
+
+  /* AIS status badges */
+  .ais-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 11px;border-radius:12px;font-size:11px;font-weight:600;letter-spacing:.04em;white-space:nowrap;cursor:pointer;user-select:none;transition:opacity .15s,transform .1s;flex-shrink:0;}
+  .ais-badge:hover{opacity:.8;transform:scale(.97);}
+  .ais-badge .bdot{width:5px;height:5px;border-radius:50%;}
+  .ais-badge .chev{font-size:8px;margin-left:2px;opacity:.6;}
+  .ais-done{background:var(--done-bg);color:var(--done-text);border:1px solid var(--done-border);}
+  .ais-done .bdot{background:var(--done-text);}
+  .ais-wip{background:#eff6ff;color:#1d4ed8;border:1px solid #93c5fd;}
+  .ais-wip .bdot{background:#1d4ed8;animation:pulse 2s infinite;}
+  .ais-tbc{background:#fefce8;color:#854d0e;border:1px solid #fde68a;}
+  .ais-tbc .bdot{background:#854d0e;}
+  .ais-upcoming{background:#fff7ed;color:#c2410c;border:1px solid #fed7aa;}
+  .ais-upcoming .bdot{background:#c2410c;}
+
+  /* AIS row — grid for alignment */
+  .ais-row{display:grid;grid-template-columns:28px 1fr 130px 120px;align-items:center;gap:12px;padding:12px 20px;border-bottom:1px solid var(--border);transition:.15s;}
+  .ais-row:last-child{border-bottom:none;}
+  .ais-row:hover{background:var(--grad-soft);}
+
+  /* AIS status popup */
+  .ais-status-wrapper{position:relative;flex-shrink:0;}
+  .ais-popup{position:absolute;top:calc(100% + 6px);right:0;z-index:300;background:var(--surface);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 28px rgba(107,47,160,.13);padding:5px;min-width:150px;display:none;}
+  .ais-popup.open{display:block;}
+  .ais-popup-option{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:7px;cursor:pointer;font-size:12.5px;font-weight:500;color:var(--text);transition:.12s;}
+  .ais-popup-option:hover{background:var(--grad-soft);}
+  /* AIS date field */
+  .ais-date-field{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;letter-spacing:.04em;color:var(--purple);background:var(--grad-soft);border:1px solid rgba(107,47,160,.25);padding:4px 11px;border-radius:12px;cursor:pointer;transition:.14s;white-space:nowrap;flex-shrink:0;}
+  .ais-date-field:hover{border-color:var(--purple);background:rgba(107,47,160,.14);}
+  .ais-date-field svg{opacity:.6;flex-shrink:0;}
+
+  /* AIS intro */
+  .ais-intro{background:var(--grad-soft);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin-bottom:24px;display:flex;align-items:center;gap:16px;}
+  .ais-intro-text{font-size:13px;color:var(--muted);line-height:1.6;}
+  .ais-intro-text strong{color:var(--purple);}
+  .ais-legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+
+  @media(max-width:768px){
+    header,.hero,.filters-bar,main,footer,.legend{padding-left:20px;padding-right:20px;}
+    .filters-bar{top:60px;}
+    .stats-row{gap:20px;}
+    .sdiv{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="logo" href="https://www.venus.ai" target="_blank">
+      <div class="logo-v">V</div>
+      <span class="logo-text">Venus AI</span>
+    </a>
+
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <h1>2026 Integrated Digital Marketing &amp;<br><em>Lead Generation Campaigns</em></h1>
+    <p class="hero-sub">Timeline &amp; Deliverables</p>
+
+    <div class="core-sections">
+
+      <div class="cs-group">
+        <div class="cs-group-label">Paid Media</div>
+        <div class="cs-items">
+          <span class="cs-tag">Social Media Ads</span>
+          <span class="cs-tag">Google Ads (Search, Display, YouTube)</span>
+        </div>
+      </div>
+
+      <div class="cs-group">
+        <div class="cs-group-label">CRM Marketing</div>
+        <div class="cs-items">
+          <span class="cs-tag">E-blasts</span>
+          <span class="cs-tag">SMS</span>
+        </div>
+      </div>
+
+      <div class="cs-group">
+        <div class="cs-group-label">Organic &amp; Content</div>
+        <div class="cs-items">
+          <span class="cs-tag">Organic Social Media</span>
+          <span class="cs-tag">Blog Content (SEO / AEO / GEO)</span>
+        </div>
+      </div>
+
+      <div class="cs-row-break"></div>
+
+      <div class="cs-group">
+        <div class="cs-group-label">Owned Media</div>
+        <div class="cs-items">
+          <span class="cs-tag">Website</span>
+          <span class="cs-tag">Landing Pages</span>
+        </div>
+      </div>
+
+      <div class="cs-group">
+        <div class="cs-group-label">Performance &amp; Analytics</div>
+        <div class="cs-items">
+          <span class="cs-tag">Tracking, MQLs &amp; Attribution</span>
+        </div>
+      </div>
+
+      <div class="cs-group">
+        <div class="cs-group-label">Lead Management &amp; Sales Alignment</div>
+        <div class="cs-items">
+          <span class="cs-tag">Technical Fixes &amp; Refinements</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-pill">United States &amp; Canada</div>
+      <div class="updated-box">
+        <span>Updated by <strong>Josephine Chan</strong> on <strong id="updated-display">Jul 22</strong></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="view-tabs">
+  <div class="view-tabs-inner">
+    <button class="view-tab" id="tab-ais" onclick="setView('ais',this)">⭐ AIS Events</button>
+    <button class="view-tab active" id="tab-timeline" onclick="setView('timeline',this)">📅 Timeline</button>
+    <button class="view-tab" id="tab-channel" onclick="setView('channel',this)">📡 By Channel</button>
+    <button class="view-tab" id="tab-project" onclick="setView('project',this)">📁 By Project</button>
+  </div>
+</div>
+
+<div class="legend">
+  <div class="legend-inner">
+    <span style="font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--text);">Status:</span>
+    <span style="display:flex;align-items:center;gap:7px;">
+      <span class="status-badge s-done" style="cursor:default;pointer-events:none;font-size:12px;padding:5px 12px;"><span class="bdot"></span>Done</span> Completed &amp; deployed
+    </span>
+    <span style="display:flex;align-items:center;gap:7px;">
+      <span class="status-badge s-up" style="cursor:default;pointer-events:none;font-size:12px;padding:5px 12px;"><span class="bdot"></span>Upcoming</span> Scheduled / in progress
+    </span>
+  </div>
+</div>
+
+<div class="filters-bar" id="filters-bar">
+  <div class="filters-inner">
+    <span class="filter-label">Month:</span>
+    <button class="filter-btn active" id="f-all" onclick="setMonthFilter('all',this)">All</button>
+    <button class="filter-btn" id="f-feb" onclick="setMonthFilter('february',this)">February</button>
+    <button class="filter-btn" id="f-mar" onclick="setMonthFilter('march',this)">March</button>
+    <button class="filter-btn" id="f-apr" onclick="setMonthFilter('april',this)">April</button>
+    <button class="filter-btn" id="f-may" onclick="setMonthFilter('may',this)">May</button>
+    <button class="filter-btn" id="f-jun" onclick="setMonthFilter('june',this)">June</button>
+    <button class="filter-btn" id="f-jul" onclick="setMonthFilter('july',this)">July</button>
+    <button class="filter-btn" id="f-aug" onclick="setMonthFilter('august',this)">August</button>
+    <button class="filter-btn" id="f-sep" onclick="setMonthFilter('september',this)">September</button>
+    <div class="filter-sep"></div>
+    <span class="filter-label">Sort:</span>
+    <button class="filter-btn active" id="sort-month" onclick="setSort('month',this)">By Month</button>
+    <button class="filter-btn" id="sort-status" onclick="setSort('status',this)">By Status</button>
+  </div>
+</div>
+
+<main id="main-content"></main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-note">Venus AI · Digital Marketing · United States &amp; Canada</div>
+  </div>
+</footer>
+
+<script>
+const CAL = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`;
+const MONTHS = ['february','march','april','may','june','july','august','september'];
+const STATUS_ORDER = ['done','upcoming'];
+const S_LABELS = {done:'Done', upcoming:'Upcoming'};
+const S_CLASS  = {done:'s-done', upcoming:'s-up'};
+
+let campaigns = [
+  {id:1,  month:'february', project:'events',         title:'Spanish Dinner — New York',                                                  date:'Mar 19',             status:'done',     channels:['Landing Page'],                               notes:'Landing page completed and live.'},
+  {id:2,  month:'february', project:'recruitment',    title:'HR LinkedIn Recruitment Post',                                                   date:'',                   status:'done',     channels:['LinkedIn'],                                   notes:'Done and published.'},
+  {id:3,  month:'february', project:'seasonal',       title:"Valentine's Day",                                                             date:'',                   status:'done',     channels:['Social Media','B2B','B2C'],                   notes:'Done and published on both B2B and B2C channels.'},
+  {id:4,  month:'february', project:'crm',            title:'EBD & Hair Customer Surveys',                                                 date:'',                   status:'done',     channels:['E-blast','Survey'],                           notes:'Surveys completed; e-blasts sent.'},
+  {id:5,  month:'february', project:'bewell',         title:'Be+Well New York',                                                            date:'',                   status:'done',     channels:['Landing Page','E-blast','Social Media','SMS','Website'], notes:'E-blasts: Feb 17, Feb 24, Mar 3 — done, workflows set up. Social media posts and website events section done and published. SMS Mar 4 — done and deployed.'},
+  {id:6,  month:'february', project:'esi',            title:'ESI Show Vancouver',                                                     date:'',                   status:'done',     channels:['Social Media','Website Events'],               notes:'Social media posts and website events section done and published.'},
+  {id:7,  month:'february', project:'viva-sms',       title:'Viva SMS Blast — Round #1 (Viva MD/GLB)',                                    date:'',                   status:'done',     channels:['SMS'],                                         notes:'Done and deployed.'},
+  {id:8,  month:'february', project:'nova-smart',     title:'Nova SMART Campaign',                                                         date:'',                   status:'done',     channels:['Social Media','Ads','E-blast','Website Blog'], notes:'All assets completed.'},
+  {id:9,  month:'february', project:'nova-roi',       title:'Nova ROI Campaign — Social Ads',                                             date:'',                   status:'done',     channels:['Social Ads','US'],                             notes:'Ads done; now running in the US.'},
+  {id:10, month:'february', project:'nova-arora',     title:'Nova Testimonial — Dr. Arora (Social Ads)',                                  date:'',                   status:'done',     channels:['Social Ads','US'],                             notes:'Ads done; now running in the US.'},
+  {id:11, month:'march',    project:'nova-roi',       title:'Nova ROI Campaign — Social Media Posts',                                           date:'Mar 5',                   status:'done',     channels:['Social Media'],                               notes:'Done and published.'},
+  {id:12, month:'march',    project:'recruitment',    title:'HR LinkedIn Recruitment Post',                                                   date:'Mar 6',              status:'done',     channels:['LinkedIn'],                                   notes:'Done and published.'},
+  {id:13, month:'march',    project:'viva-sms',       title:'Viva SMS Blast — Round #2 (Versa/Versa Pro)',                                date:'Mar 9',              status:'done',     channels:['SMS'],                                         notes:'Done and deployed.'},
+  {id:14, month:'march',    project:'nova-arora',     title:'Nova Testimonial — Dr. Arora (Social Media Posts)',                               date:'Mar 17',                   status:'done',     channels:['Social Media'],                               notes:'Done and published.'},
+  {id:15, month:'march',    project:'nova-roi',       title:'Nova ROI Campaign — E-blast',                                               date:'Mar 19',             status:'done',     channels:['E-blast'],                                     notes:'Done and deployed.'},
+  {id:16, month:'march',    project:'seasonal',       title:"Mother's & Father's Day & Spring-Summer Campaigns — E-blast",                         date:'Mar 26',             status:'done',     channels:['E-blast'],                                     notes:'Done and deployed.'},
+  {id:17, month:'march',    project:'seasonal',       title:"Mother's & Father's Day & Spring-Summer Campaigns — Social Media Posts",                    date:'Mar 27',                   status:'done', channels:['Social Media'],                               notes:'Done and published.'},
+  {id:18, month:'april',    project:'influencer',     title:'Jennifer Yepez — Instagram Collaboration Post',                             date:'Apr 8',             status:'done',     channels:['Instagram','Collaboration'],                   notes:'Done and published.'},
+  {id:26, month:'march',    project:'roi-calc',       title:'Nova ROI Calculator — Private Landing Page Set-up & Code Clean-up',                                     date:'Mar 30',                   status:'done',     channels:['Landing Page'],                               notes:'Done and live.'},
+  {id:36, month:'april',    project:'seasonal',       title:'Easter — Social Media Posts',                                                date:'Apr 3',              status:'done',     channels:['Social Media'],                               notes:'Done and published.'},
+  {id:35, month:'april',    project:'viva-1m',        title:'Viva 1 Million+ Campaign — Landing Page, Form & Salesforce Campaign Build',date:'Apr 8',             status:'done',     channels:['Landing Page','Salesforce','CRM'],             notes:'Done. Landing page published with form integrated with the newly set up Salesforce campaign.'},
+  {id:19, month:'april',    project:'recruitment',    title:'HR LinkedIn Recruitment Post',                                                   date:'Apr 6',              status:'done',     channels:['LinkedIn'],                                   notes:'Done and published.'},
+  {id:20, month:'april',    project:'viva-1m',        title:'Viva 1 Million+ Campaign — Teaser — Social Media Posts #1',                                        date:'Apr 9',              status:'done',     channels:['Social Media'],                               notes:'Done and published.'},
+  {id:37, month:'april',    project:'viva-1m',        title:'Viva 1 Million+ Campaign — Venus AI Website Pop-up Banner',               date:'Apr 13',             status:'done',     channels:['Website'],                                     notes:'Done and live.'},
+  {id:23, month:'april',    project:'viva-1m',        title:'Viva 1 Million+ Campaign — E-blast #1 (Prospects)',                            date:'Apr 16',             status:'done',     channels:['E-blast'],                                     notes:'Done and deployed. Melissa added to the distribution list.'},
+  {id:49, month:'april',    project:'crm',            title:'ARTAS 9X & ARTAS iX — End of Life (EOL) E-blast',                            date:'Apr 20',             status:'done',     channels:['E-blast'],                                     notes:'Done and deployed.'},
+  {id:50, month:'april',    project:'nova-smart',     title:'Nova SMART Talks Webinar (Jun 3) — Webinar Set-up on GoToWebinar',            date:'Apr 22',             status:'done',     channels:['Website'],                                     notes:'Set-up completed.'},
+  {id:52, month:'april',    project:'nova-smart',     title:'Nova SMART Talks Webinar (Jun 3) — Landing Page, Form & Salesforce Campaign Set-up', date:'Apr 22',        status:'done',     channels:['Landing Page','Salesforce'],                   notes:'Set-up completed.'},
+  {id:53, month:'april',    project:'nova-smart',     title:'Nova SMART Talks Webinar (Jun 3) — Social Media Posts',                      date:'Apr 22',             status:'done',     channels:['Social Media'],                               notes:'Done and published.'},
+  {id:54, month:'april',    project:'nova-smart',     title:'Nova SMART Talks Webinar (Jun 3) — E-blasts',                                date:'Apr 22',             status:'done',     channels:['E-blast'],                                     notes:'Done and deployed.'},
+  {id:46, month:'april',    project:'viva-1m',        title:'Viva 1 Million+ Campaign — E-blast #2 (Current Customers)',                    date:'Apr 23',             status:'done',     channels:['E-blast'],                                     notes:'Done and deployed. Melissa added to the distribution list.'},
+  {id:51, month:'april',    project:'nova-arora',     title:'Nova Testimonial — Dr. Cheryl Haseeb (Social Media Posts & Ads)',            date:'Apr 24',             status:'done',     channels:['Social Media','Ads'],                          notes:'Done and published.'},
+  {id:55, month:'april',    project:'nova-smart',     title:'Nova SMART Talks Webinar (Jun 3) — Social Media Ads',                        date:'Apr 23',             status:'done',     channels:['Ads'],                                         notes:'Done; ads are now running in the US.'},
+  {id:56, month:'april',    project:'nova-smart',     title:'Nova SMART Talks Webinar (Jun 3) — Website Educational Webinars Section Update', date:'Apr 23',           status:'done',     channels:['Website'],                                     notes:'Done and updated.'},
+  {id:57, month:'april',    project:'crm',            title:'Hair Lead Generation Ad Campaign — Re-set-up',                                date:'Apr 28',             status:'done',     channels:['Ads'],                                         notes:'Set-up completed; ads are now running in the US.'},
+  {id:58, month:'april',    project:'viva-1m',        title:'Viva 1 Million+ Campaign — Official Release — Social Media Posts & Ads #3 (Versa Pro)', date:'Apr 29',    status:'done',     channels:['Social Media','Ads'],                          notes:'Done and published.'},
+  {id:38, month:'april',    project:'nova-roi',       title:'Australia Official Nova Launch Video — Social Media Teaser for Canada Launch', date:'Apr 10',            status:'done',     channels:['Social Media'],                               notes:'Done and published. Australia team tagged.'},
+  {id:39, month:'april',    project:'viva-1m',        title:'Viva 1 Million+ Campaign — Website Pop-up Message for First-Time Visitors', date:'Apr 17',            status:'done',     channels:['Website'],                                     notes:'Done and live.'},
+  {id:40, month:'april',    project:'events',         title:"Jason's 3 Nova Dinner Events — One Combined E-blast",                         date:'Apr 15',            status:'done',     channels:['E-blast'],                                     notes:'Done and deployed.'},
+  {id:21, month:'april',    project:'awareness',      title:'Rosacea Awareness Month — Social Media Posts',                                date:'Apr 13',             status:'done',     channels:['Social Media'],                               notes:'Done and published. Posts linked back to the SEO blogs.'},
+  {id:41, month:'april',    project:'awareness',      title:'Rosacea Awareness Month — Two SEO Blogs',                                     date:'Apr 13',             status:'done',     channels:['Blog'],                                        notes:'Done and published. One for Educational Blog, one for Clinical Education.'},
+  {id:22, month:'april',    project:'esi',            title:'ESI Show Toronto — Social Media Posts & Website Events Section Update',                                                            date:'Apr 14',             status:'done',     channels:['Social Media','Website Events'],               notes:'Done. Social media posts published; website events section updated.'},
+  {id:24, month:'april',    project:'viva-1m',        title:'Viva 1 Million+ Campaign — Official Release — Social Media Posts #2',           date:'Apr 20',             status:'done', channels:['Social Media'],                               notes:'Done and published. Second social media post in the weekly always-on series.'},
+  {id:47, month:'april',    project:'viva-1m',        title:'Viva 1 Million+ Campaign — Official Release — SMS (1st Batch): New York, Philadelphia & Miami',                date:'Apr 21',             status:'done',     channels:['SMS'],                                         notes:'Done and deployed.'},
+  {id:48, month:'april',    project:'viva-1m',        title:'Viva 1 Million+ Campaign — Official Release — Always-on Ads',                  date:'Apr 20',             status:'done',     channels:['Always-on Ads'],                               notes:'Done; ads are now running in both the US and Canada.'},
+  {id:25, month:'april',    project:'nova-sculptify', title:'Nova Sculptify — Video — Social Media Posts & Ads',                                  date:'Apr 23',             status:'done',     channels:['Social Media','Ads','Video'],                  notes:'Done and published.'},
+  {id:59, month:'may',      project:'recruitment',    title:'HR LinkedIn Recruitment Post',                                                date:'May 5',              status:'done',     channels:['LinkedIn'],                                   notes:'Done and published.'},
+  {id:60, month:'may',      project:'viva-1m',        title:'Viva 1 Million+ Campaign — Official Release — Social Media Posts & Ads #4 (Viva MD)', date:'May 7',          status:'done',     channels:['Social Media','Ads'],                          notes:'Done and published.'},
+  {id:61, month:'may',      project:'events',         title:'Nova Dinner Event — Las Vegas — E-blasts',                                    date:'May 7',              status:'done',     channels:['E-blast'],                                     notes:'Done and deployed.'},
+  {id:62, month:'may',      project:'seasonal',       title:'Mother’s Day — Social Media Posts',                                      date:'May 10',             status:'done',     channels:['Social Media'],                                notes:'Done and published.'},
+  {id:63, month:'may',      project:'qbr',            title:'QBR Slides — Preparation',                                                    date:'May 11',             status:'done',     channels:['Sales Alignment'],                             notes:'Completed.'},
+  {id:64, month:'may',      project:'nova-smart',     title:'Nova SMART Talks Webinar (Jun 3) — Landing Page & Form Set-up for Australia', date:'May 12',             status:'done',     channels:['Landing Page'],                                notes:'Set-up completed.'},
+  {id:65, month:'may',      project:'nova-arora',     title:'Nova Testimonial — Dr. Cheryl Haseeb (Graphic) — Social Media Posts',         date:'May 19',             status:'done',     channels:['Social Media'],                                notes:'Done and published.'},
+  {id:66, month:'may',      project:'performance',    title:'Lead Generation Analytics Report — Canada — Q1 2026',                         date:'May 20',             status:'done',     channels:['Performance & Analytics'],                     notes:'Completed.'},
+  {id:67, month:'may',      project:'nova-roi',       title:'The Aesthetic Guide — Feature Article — Social Media Posts & Ads #1',         date:'May 21',             status:'done',     channels:['Social Media','Ads'],                          notes:'Done and published.'},
+  {id:68, month:'may',      project:'viva-1m',        title:'Viva 1 Million+ Campaign — Official Release — Social Media Posts & Ads #5',   date:'May 22',             status:'done',     channels:['Social Media','Ads'],                          notes:'Done and published.'},
+  {id:69, month:'may',      project:'nova-sculptify', title:'Nova Sculptify — Social Media Posts #1',                                       date:'May 25',             status:'done',     channels:['Social Media'],                                notes:'Done and published.'},
+  {id:70, month:'may',      project:'viva-1m',        title:'SEO Blogs x3 — Skin Cancer Awareness Month',                                  date:'May 26',             status:'done',     channels:['Blog'],                                        notes:'Done and published.'},
+  {id:71, month:'may',      project:'venus-website',  title:'Venus AI Website — Executive Team Section Update',                            date:'May 27',             status:'done',     channels:['Website'],                                     notes:'Done and updated.'},
+  {id:72, month:'june',     project:'nova-sculptify', title:'Nova Sculptify — Social Media Posts #2',                                       date:'Jun 4',              status:'done',     channels:['Social Media'],                                notes:'Done and published.'},
+  {id:73, month:'june',     project:'recruitment',    title:'HR LinkedIn Recruitment Post — Viva 1 Million+ Internal Staff Celebration Party', date:'Jun 8',            status:'done',     channels:['LinkedIn'],                                   notes:'Done and published.'},
+  {id:74, month:'june',     project:'viva-1m',        title:'Viva 1 Million+ Campaign — Internal Staff Celebration Party (Photo Album) — Social Media Posts #6', date:'Jun 8', status:'done', channels:['Social Media'],                               notes:'Done and published.'},
+  {id:75, month:'june',     project:'clinical-research', title:'ASLMS Clinical Research E-Poster — E-blast',                                date:'Jun 11',             status:'done',     channels:['E-blast'],                                     notes:'Done and deployed.'},
+  {id:76, month:'june',     project:'nova-sculptify', title:'Nova Sculptify — Social Media Posts #3',                                       date:'Jun 11',             status:'done',     channels:['Social Media'],                                notes:'Done and published.'},
+  {id:77, month:'june',     project:'viva-1m',        title:'Viva 1 Million+ Campaign — Official Release — Social Media Posts & Ads #7',    date:'Jun 17',             status:'done',     channels:['Social Media','Ads'],                          notes:'Done and published.'},
+  {id:78, month:'june',     project:'nova-sculptify', title:'Nova Sculptify — Social Media Posts #4',                                       date:'Jun 18',             status:'done',     channels:['Social Media'],                                notes:'Done and published.'},
+  {id:79, month:'june',     project:'clinical-research', title:'ASLMS Clinical Research E-Poster — Social Media Posts with Link to E-poster (via Paperflite)', date:'Jun 19', status:'done', channels:['Social Media'],                               notes:'Done and published.'},
+  {id:80, month:'june',     project:'venus-hair',     title:'Venus Hair Preceptorship — Social Media Posts',                               date:'Jun 19',             status:'done',     channels:['Social Media'],                                notes:'Done and published.'},
+  {id:81, month:'june',     project:'seasonal',       title:'Father\u2019s Day — Social Media Posts',                                      date:'Jun 21',             status:'done',     channels:['Social Media'],                                notes:'Done and published.'},
+  {id:82, month:'june',     project:'viva-1m',        title:'Viva 1 Million+ Campaign — Internal Staff Celebration Party (Video #1) — Social Media Posts #8', date:'Jun 24', status:'done', channels:['Social Media'],                               notes:'Done and published.'},
+  {id:83, month:'june',     project:'seasonal',       title:'Pride Month 2026 — Social Media Posts',                                       date:'Jun 26',             status:'done',     channels:['Social Media'],                                notes:'Done and published.'},
+  {id:84, month:'june',     project:'beyond-glp1',    title:'Beyond GLP-1 Campaign — Nova — Social Media Posts & Ads #1',                  date:'Jun 29',             status:'done',     channels:['Social Media','Ads'],                          notes:'Done and published.'},
+  {id:85, month:'july',     project:'seasonal',       title:'Canada Day — Instagram Story',                                                date:'Jul 1',              status:'done',     channels:['Instagram'],                                   notes:'Done and published.'},
+  {id:86, month:'july',     project:'nova-roi',       title:'Nova ROI Calculator — Mobile Version',                                         date:'Jul 2',              status:'done',     channels:['Website'],                                     notes:'Done and live.'},
+  {id:87, month:'july',     project:'beyond-glp1',    title:'Beyond GLP-1 Campaign — Bliss MAX — Social Media Posts & Ads #2',             date:'Jul 2',              status:'done',     channels:['Social Media','Ads'],                          notes:'Done and published.'},
+  {id:88, month:'july',     project:'viva-1m',        title:'Viva 1 Million+ Campaign — Internal Staff Celebration Party (Video #2) — Social Media Posts #9', date:'Jul 3', status:'done', channels:['Social Media'],                               notes:'Done and published.'},
+  {id:89, month:'july',     project:'seasonal',       title:'Independence Day (United States) — Instagram Story',                           date:'Jul 4',              status:'done',     channels:['Instagram'],                                   notes:'Done and published.'},
+  {id:90, month:'july',     project:'beyond-glp1',    title:'Beyond GLP-1 Campaign — Nova & Bliss MAX — Social Media Posts & Ads #3',      date:'Jul 10',             status:'done',     channels:['Social Media','Ads'],                          notes:'Done and published.'},
+  {id:91, month:'july',     project:'recruitment',    title:'HR LinkedIn Recruitment Post',                                                 date:'Jul 13',             status:'done',     channels:['LinkedIn'],                                   notes:'Done and published.'},
+  {id:92, month:'july',     project:'seasonal',       title:'FIFA World Cup 2026 — Social Media Posts',                                    date:'Jul 18',             status:'done',     channels:['Social Media'],                                notes:'Done and published.'},
+  {id:93, month:'july',     project:'qbr',            title:'VET QBR Slides — Finalisation',                                               date:'Jul 20',             status:'done',     channels:['Sales Alignment'],                             notes:'Completed.'},
+  {id:94, month:'july',     project:'ais-events',     title:'AIS #1 — New Jersey — Landing Page Set-up',                                   date:'Jul 23',             status:'done',     channels:['Landing Page'],                                notes:'Done and live.'},
+  {id:95, month:'july',     project:'ais-events',     title:'AIS #1 — New Jersey — Form Set-up & Salesforce Campaign Integration',          date:'Jul 23',             status:'done',     channels:['Landing Page','Salesforce'],                   notes:'Set-up completed.'},
+  {id:96, month:'august',   project:'ais-events',     title:'AIS #1 — New Jersey — E-blast #1 (Save the Date)',                            date:'Aug 5',              status:'upcoming', channels:['E-blast'],                                     notes:''},
+  {id:97, month:'august',   project:'ais-events',     title:'AIS #1 — New Jersey — E-blast #2 (Registration Open)',                        date:'Aug 20',             status:'upcoming', channels:['E-blast'],                                     notes:''},
+  {id:98, month:'august',   project:'ais-events',     title:'AIS #1 — New Jersey — SMS Blast',                                             date:'Aug 28',             status:'upcoming', channels:['SMS'],                                         notes:''},
+  {id:99, month:'september',project:'ais-events',     title:'AIS #1 — New Jersey — E-blast #3 (Last Call)',                                date:'Sep 9',              status:'upcoming', channels:['E-blast'],                                     notes:''},
+];
+
+let monthFilter = 'all';
+let sortMode = 'month';
+let currentView = 'timeline';
+let openPopup = null;
+
+// Channel definitions — maps display name → keywords that appear in campaign channels[]
+const CHANNEL_GROUPS = [
+  { key:'blog',           label:'Blog & Content',        icon:'<path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>' },
+  { key:'email',          label:'E-blasts',              icon:'<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>' },
+  { key:'instagram',      label:'Instagram',             icon:'<rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>' },
+  { key:'linkedin',       label:'LinkedIn',              icon:'<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>' },
+  { key:'ads',            label:'Paid Ads',              icon:'<rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>' },
+  { key:'sms',            label:'SMS',                   icon:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>' },
+  { key:'social-media',   label:'Social Media',         icon:'<circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72M10.5 2.5c1.5 7 7 10 7 10M6 13.5c4-1 6-4 6-4M3.5 9.5c2 1 4 .5 4 .5"/>' },
+  { key:'website',        label:'Website & Landing Pages',icon:'<circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>' },
+];
+
+const PROJECT_GROUPS = [
+  {
+    key:'ais-events-group', label:'AIS Events',
+    icon:'<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>',
+    children:[
+      { key:'ais-events', label:'AIS #1 — New Jersey' },
+    ]
+  },
+  {
+    key:'awareness',       label:'Awareness Month Campaigns',
+    icon:'<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>',
+    children:[
+      { key:'awareness',  label:'Awareness Month Campaigns' },
+    ]
+  },
+  {
+    key:'beyond-glp1-group', label:'Beyond GLP-1 Campaign',
+    icon:'<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>',
+    children:[
+      { key:'beyond-glp1', label:'Beyond GLP-1 Campaign' },
+    ]
+  },
+  {
+    key:'clinical-research', label:'Clinical Research',
+    icon:'<path d="M19.428 15.428a2 2 0 0 0-1.022-.547l-2.387-.477a6 6 0 0 0-3.86.517l-.318.158a6 6 0 0 1-3.86.517L6.05 15.21a2 2 0 0 0-1.806.547M8 4h8l-1 1v5.172a2 2 0 0 0 .586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 0 0 9 10.172V5L8 4z"/>',
+    children:[
+      { key:'clinical-research', label:'Clinical Research' },
+    ]
+  },
+  {
+    key:'crm-group',       label:'CRM',
+    icon:'<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+    children:[
+      { key:'crm', label:'CRM & Surveys' },
+    ]
+  },
+  {
+    key:'events-group',    label:'Events & Partnerships',
+    icon:'<rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>',
+    children:[
+      { key:'bewell',     label:'Be+Well New York' },
+      { key:'esi',        label:'ESI Shows' },
+      { key:'events',     label:'Events' },
+      { key:'influencer', label:'Influencer Collaborations' },
+    ]
+  },
+  {
+    key:'nova',            label:'Nova Campaigns',
+    icon:'<path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>',
+    children:[
+      { key:'nova-arora',     label:'Nova Testimonial' },
+      { key:'nova-canada',    label:'Nova Launch in Canada' },
+      { key:'nova-roi',       label:'Nova ROI Campaign' },
+      { key:'nova-sculptify', label:'Nova Sculptify' },
+      { key:'nova-smart',     label:'Nova SMART Campaign' },
+    ]
+  },
+  {
+    key:'performance',     label:'Performance & Analytics',
+    icon:'<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>',
+    children:[
+      { key:'performance', label:'Performance & Analytics' },
+    ]
+  },
+  {
+    key:'qbr',             label:'QBR',
+    icon:'<rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/>',
+    children:[
+      { key:'qbr', label:'QBR Slides' },
+    ]
+  },
+  {
+    key:'recruitment-group', label:'LinkedIn Recruitment',
+    icon:'<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>',
+    children:[
+      { key:'recruitment', label:'Recruitment Posts' },
+    ]
+  },
+  {
+    key:'sales-alignment', label:'Sales Alignment',
+    icon:'<line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/>',
+    children:[
+      { key:'roi-calc', label:'ROI Calculator' },
+    ]
+  },
+  {
+    key:'seasonal-group',  label:'Seasonal Campaigns',
+    icon:'<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>',
+    children:[
+      { key:'seasonal',   label:'Seasonal Campaigns' },
+    ]
+  },
+  {
+    key:'venus-hair-group', label:'Venus Hair',
+    icon:'<path d="M12 2a5 5 0 1 0 0 10A5 5 0 0 0 12 2zM4 20c0-4 3.6-7 8-7s8 3 8 7"/>',
+    children:[
+      { key:'venus-hair', label:'Venus Hair' },
+    ]
+  },
+  {
+    key:'venus-website',   label:'Venus AI Website',
+    icon:'<circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>',
+    children:[
+      { key:'venus-website', label:'Website Updates' },
+    ]
+  },
+  {
+    key:'viva',            label:'Viva Campaigns',
+    icon:'<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>',
+    children:[
+      { key:'viva-1m',    label:'Viva 1 Million+ Campaign' },
+      { key:'viva-sms',   label:'Viva SMS Blasts' },
+    ]
+  },
+];
+
+// Map channel keywords to group keys
+function getChannelGroup(ch) {
+  const c = ch.toLowerCase();
+  if (c.includes('instagram') || c.includes('collaboration')) return 'instagram';
+  if (c.includes('linkedin')) return 'linkedin';
+  if (c.includes('social ads') || c.includes('always-on')) return 'ads';
+  if (c.includes('ads')) return 'ads';
+  if (c.includes('social')) return 'social-media';
+  if (c.includes('e-blast') || c.includes('email')) return 'email';
+  if (c.includes('sms')) return 'sms';
+  if (c.includes('landing') || c.includes('website') || c.includes('events') || c.includes('performance') || c.includes('sales alignment')) return 'website';
+  if (c.includes('blog')) return 'blog';
+  return null;
+}
+
+
+// Months that are "past" and collapse by default
+const PAST_MONTHS = new Set(['february','march','april','may','june']);
+const collapsedMonths = new Set();
+
+// ── RENDER ──────────────────────────────────────────────────────────────
+function render() {
+  const main = document.getElementById('main-content');
+  const fb = document.getElementById('filters-bar');
+
+  if (currentView === 'channel') {
+    fb.style.display = 'none';
+    renderByChannel(main);
+    return;
+  }
+
+  if (currentView === 'project') {
+    fb.style.display = 'none';
+    renderByProject(main);
+    return;
+  }
+
+  if (currentView === 'ais') {
+    fb.style.display = 'none';
+    renderAIS(main);
+    return;
+  }
+
+  fb.style.display = '';
+  const list = monthFilter === 'all' ? campaigns : campaigns.filter(c => c.month === monthFilter);
+
+  if (sortMode === 'month') {
+    const months = monthFilter === 'all' ? MONTHS : [monthFilter];
+    const upcomingMonths = months.filter(m => !PAST_MONTHS.has(m));
+    const pastMonths = months.filter(m => PAST_MONTHS.has(m));
+
+    const renderMonth = m => {
+      const items = list.filter(c => c.month === m);
+      if (!items.length) return '';
+      const label = m[0].toUpperCase() + m.slice(1);
+      const isPast = PAST_MONTHS.has(m);
+      const isCollapsed = collapsedMonths.has(m);
+      const doneCount = items.filter(x => x.status === 'done').length;
+
+      const pastTag = isPast
+        ? `<span style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+            background:var(--done-bg);color:var(--done-text);border:1px solid var(--done-border);
+            padding:3px 10px;border-radius:12px;">Past</span>`
+        : '';
+
+      const collapseBtn = isPast
+        ? `<button onclick="event.stopPropagation();toggleMonth('${m}')" style="
+            display:inline-flex;align-items:center;gap:6px;
+            background:none;border:1px solid var(--border);border-radius:8px;
+            padding:5px 12px;cursor:pointer;font-family:'DM Sans',sans-serif;
+            font-size:12px;font-weight:500;color:var(--muted);transition:.15s;"
+            onmouseover="this.style.borderColor='var(--purple)';this.style.color='var(--purple)'"
+            onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">
+            <span style="display:inline-block;transition:transform .25s;transform:rotate(${isCollapsed?'0deg':'-180deg'})">▾</span>
+            ${isCollapsed ? `Show ${items.length} campaigns` : 'Collapse'}
+          </button>`
+        : '';
+
+      return `<section class="month-section" data-month="${m}">
+        <div class="month-header">
+          <div><div class="month-title" style="color:${isPast?'var(--muted)':'var(--text)'}">${label}</div><div class="month-bar" style="opacity:${isPast?.4:1}"></div></div>
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+            ${pastTag}
+            <span class="month-count">${doneCount}/${items.length} done</span>
+            ${collapseBtn}
+          </div>
+        </div>
+        <div id="month-body-${m}" style="display:${isCollapsed?'none':'block'}">
+          <div class="campaigns-grid">${sortedItems(items).map(cardHTML).join('')}</div>
+        </div>
+      </section>`;
+    };
+
+    const upcomingHTML = upcomingMonths.map(renderMonth).join('');
+    const pastHTML = [...pastMonths].reverse().map(renderMonth).join('');
+
+    const divider = pastHTML ? `
+      <div style="display:flex;align-items:center;gap:16px;margin:40px 0 28px;">
+        <div style="flex:1;height:2px;background:var(--grad);opacity:.3;border-radius:2px;"></div>
+        <span style="font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+          color:#fff;background:var(--grad);padding:7px 20px;border-radius:20px;white-space:nowrap;">
+          Past Months
+        </span>
+        <div style="flex:1;height:2px;background:var(--grad);opacity:.3;border-radius:2px;"></div>
+      </div>` : '';
+
+    main.innerHTML = (upcomingHTML || empty()) + divider + pastHTML;
+  } else {
+    main.innerHTML = STATUS_ORDER.map(s => {
+      const items = list.filter(c => c.status === s);
+      if (!items.length) return '';
+      return `<div class="status-group-wrap">
+        <div class="status-group-header">
+          <span class="status-badge ${S_CLASS[s]}" style="cursor:default;pointer-events:none;font-size:12px;padding:5px 13px;"><span class="bdot"></span>${S_LABELS[s]}</span>
+          <span class="status-group-count">${items.length} campaign${items.length!==1?'s':''}</span>
+        </div>
+        <div class="campaigns-grid">${sortedItems(items).map(cardHTML).join('')}</div>
+      </div>`;
+    }).join('') || empty();
+  }
+}
+
+function empty() {
+  return '<p style="color:var(--muted);padding:40px 0;font-size:14px;">No campaigns found for this filter.</p>';
+}
+
+// Returns a numeric sort key from a date string, month-aware for cross-month views
+// e.g. "Mar 5" → 305, "Apr 7" → 407, no date → 9999
+function sortKey(dateStr) {
+  if (!dateStr) return 9999;
+  const monthMap = {Jan:1,Feb:2,Mar:3,Apr:4,May:5,Jun:6,Jul:7,Aug:8,Sep:9,Oct:10,Nov:11,Dec:12};
+  const m = dateStr.match(/([A-Za-z]+)\s+(\d+)/);
+  if (m && monthMap[m[1]]) return monthMap[m[1]] * 100 + parseInt(m[2], 10);
+  // fallback: just grab first number
+  const n = dateStr.match(/\d+/);
+  return n ? parseInt(n[0], 10) : 9999;
+}
+
+function sortedItems(items) {
+  return [...items].sort((a, b) => {
+    // 1. Status: done (0) before upcoming (1)
+    const sA = a.status === 'done' ? 0 : 1;
+    const sB = b.status === 'done' ? 0 : 1;
+    if (sA !== sB) return sA - sB;
+    // 2. Within same status: by date ascending, no-date last
+    return sortKey(a.date) - sortKey(b.date);
+  });
+}
+
+const collapsedChannels = new Set();
+
+function toggleChannel(key) {
+  if (collapsedChannels.has(key)) { collapsedChannels.delete(key); }
+  else { collapsedChannels.add(key); }
+  // toggle classes directly without full re-render for snappiness
+  const header = document.getElementById('ch-header-' + key);
+  const body = document.getElementById('ch-body-' + key);
+  const chev = document.getElementById('ch-chev-' + key);
+  if (!header || !body || !chev) return;
+  const isOpen = collapsedChannels.has(key);
+  body.classList.toggle('open', isOpen);
+  header.classList.toggle('open', isOpen);
+  chev.style.transform = isOpen ? 'rotate(-180deg)' : 'rotate(0deg)';
+}
+
+function renderByChannel(main) {
+  const groupMap = {};
+  CHANNEL_GROUPS.forEach(g => { groupMap[g.key] = []; });
+  campaigns.forEach(c => {
+    const assigned = new Set();
+    c.channels.forEach(ch => {
+      const gk = getChannelGroup(ch);
+      if (gk && !assigned.has(gk)) {
+        assigned.add(gk);
+        if (groupMap[gk]) groupMap[gk].push(c);
+      }
+    });
+  });
+  main.innerHTML = CHANNEL_GROUPS.map(g => {
+    const items = groupMap[g.key];
+    if (!items.length) return '';
+    const doneCount = items.filter(x => x.status === 'done').length;
+    const isOpen = collapsedChannels.has(g.key);
+    return `<section class="channel-section">
+      <div class="channel-header${isOpen?' open':''}" id="ch-header-${g.key}" onclick="toggleChannel('${g.key}')">
+        <div class="channel-icon"><svg viewBox="0 0 24 24">${g.icon}</svg></div>
+        <span class="channel-name">${g.label}</span>
+        <span class="channel-count">${doneCount}/${items.length} done</span>
+        <span class="channel-chevron" id="ch-chev-${g.key}" style="transform:rotate(${isOpen?'-180deg':'0deg'})">▾</span>
+      </div>
+      <div class="channel-body${isOpen?' open':''}" id="ch-body-${g.key}">
+        <div class="campaigns-grid">${sortedItems(items).map(cardHTML).join('')}</div>
+      </div>
+    </section>`;
+  }).join('') || empty();
+}
+
+const collapsedProjects = new Set();
+const collapsedSubProjects = new Set();
+
+function toggleProject(key) {
+  if (collapsedProjects.has(key)) { collapsedProjects.delete(key); }
+  else { collapsedProjects.add(key); }
+  const header = document.getElementById('pj-header-' + key);
+  const body   = document.getElementById('pj-body-' + key);
+  const chev   = document.getElementById('pj-chev-' + key);
+  if (!header || !body || !chev) return;
+  const isOpen = collapsedProjects.has(key);
+  body.classList.toggle('open', isOpen);
+  header.classList.toggle('open', isOpen);
+  chev.style.transform = isOpen ? 'rotate(-180deg)' : 'rotate(0deg)';
+}
+
+function toggleSubProject(key) {
+  if (collapsedSubProjects.has(key)) { collapsedSubProjects.delete(key); }
+  else { collapsedSubProjects.add(key); }
+  const header = document.getElementById('sp-header-' + key);
+  const body   = document.getElementById('sp-body-' + key);
+  const chev   = document.getElementById('sp-chev-' + key);
+  if (!header || !body || !chev) return;
+  const isOpen = collapsedSubProjects.has(key);
+  body.classList.toggle('open', isOpen);
+  header.classList.toggle('open', isOpen);
+  chev.style.transform = isOpen ? 'rotate(-180deg)' : 'rotate(0deg)';
+}
+
+function renderByProject(main) {
+  main.innerHTML = PROJECT_GROUPS.map(g => {
+    // Collect all items across all children
+    const allKeys = g.children.map(c => c.key);
+    const allItems = campaigns.filter(c => allKeys.includes(c.project));
+    if (!allItems.length) return '';
+    const doneCount = allItems.filter(x => x.status === 'done').length;
+    const isOpen = collapsedProjects.has(g.key);
+
+    // Build sub-groups HTML
+    const subHTML = g.children.map(child => {
+      const items = campaigns.filter(c => c.project === child.key);
+      if (!items.length) return '';
+      const childDone = items.filter(x => x.status === 'done').length;
+      const isSubOpen = collapsedSubProjects.has(child.key);
+      return `<div class="sub-group">
+        <div class="sub-group-header${isSubOpen?' open':''}" id="sp-header-${child.key}" onclick="event.stopPropagation();toggleSubProject('${child.key}')">
+          <span class="sub-group-label">${child.label}</span>
+          <span class="sub-group-count">${childDone}/${items.length} done</span>
+          <span class="sub-group-chev" id="sp-chev-${child.key}" style="transform:rotate(${isSubOpen?'-180deg':'0deg'})">▾</span>
+        </div>
+        <div class="sub-group-body${isSubOpen?' open':''}" id="sp-body-${child.key}">
+          <div class="campaigns-grid">${sortedItems(items).map(cardHTML).join('')}</div>
+        </div>
+      </div>`;
+    }).join('');
+
+    return `<section class="channel-section">
+      <div class="channel-header${isOpen?' open':''}" id="pj-header-${g.key}" onclick="toggleProject('${g.key}')">
+        <div class="channel-icon"><svg viewBox="0 0 24 24">${g.icon}</svg></div>
+        <span class="channel-name">${g.label}</span>
+        <span class="channel-count">${doneCount}/${allItems.length} done</span>
+        <span class="channel-chevron" id="pj-chev-${g.key}" style="transform:rotate(${isOpen?'-180deg':'0deg'})">▾</span>
+      </div>
+      <div class="channel-body${isOpen?' open':''}" id="pj-body-${g.key}">
+        ${subHTML}
+      </div>
+    </section>`;
+  }).join('') || empty();
+}
+
+const NOW = new Date();
+const CURRENT_MONTH = ['january','february','march','april','may','june','july','august','september','october','november','december'][NOW.getMonth()];
+
+function cardHTML(c) {
+  const isCurrentMonth = c.month === CURRENT_MONTH;
+  const isDueSoon = c.status === 'upcoming' && isCurrentMonth;
+  const hl = isDueSoon ? ' highlight' : '';
+
+  // Upcoming badge: gradient version for due-this-month, normal for others
+  const badgeStyle = isDueSoon
+    ? `style="background:var(--grad);color:#fff;border-color:transparent;"`
+    : '';
+  const badgeClass = isDueSoon ? '' : S_CLASS[c.status];
+
+  const dateChip = c.date ? `<span class="card-date">${CAL}${c.date}</span>` : '';
+  const channels = c.channels.map(ch => `<span class="ctag">${ch}</span>`).join('');
+  const notes = c.notes ? `<span class="card-notes-inline">${c.notes}</span>` : '';
+
+  return `<div class="campaign-card${hl}" id="card-${c.id}">
+    <div class="card-top">
+      <span class="card-title">${c.title}</span>
+      <div class="status-wrapper" id="sw-${c.id}">
+        <span class="status-badge ${badgeClass}" ${badgeStyle} onclick="togglePopup(${c.id},event)">
+          <span class="bdot" style="${isDueSoon?'background:#fff;':''}"></span>${S_LABELS[c.status]}<span class="chev">▾</span>
+        </span>
+        <div class="status-popup" id="popup-${c.id}">
+          <div class="popup-option" onclick="setStatus(${c.id},'done')"><span class="pdot" style="background:var(--done-text)"></span>Done</div>
+          <div class="popup-option" onclick="setStatus(${c.id},'upcoming')"><span class="pdot" style="background:var(--up-text)"></span>Upcoming</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-meta">
+      ${dateChip}
+      ${channels}
+      ${notes}
+    </div>
+  </div>`;
+}
+
+function fmtDate(val) {
+  if (!val) return null;
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const d = new Date(val + 'T00:00:00');
+  return months[d.getMonth()] + ' ' + d.getDate();
+}
+
+// ── AIS EVENTS ───────────────────────────────────────────────────────────
+const AIS_DELIVERABLES = [
+  { key:'landing',   label:'Landing Page Set-up' },
+  { key:'form',      label:'Form Set-up & Salesforce Campaign Integration' },
+  { key:'eblast1',   label:'E-blast — Round 1 (Save the Date)' },
+  { key:'eblast2',   label:'E-blast — Round 2 (Registration Open)' },
+  { key:'eblast3',   label:'E-blast — Round 3 (Last Call)' },
+  { key:'sms',       label:'SMS Blast' },
+];
+
+const AIS_EVENTS = [
+  { key:'nj',     label:'Aesthetic Intelligence Symposium (AIS) — New Jersey',  date:'Sep 19, 2026', icon:'⭐' },
+  { key:'dallas', label:'Aesthetic Intelligence Symposium (AIS) — Dallas',       date:'Oct 24, 2026', icon:'⭐' },
+  { key:'toronto',label:'Aesthetic Intelligence Symposium (AIS) — Toronto',      date:'Nov 14, 2026', icon:'⭐' },
+  { key:'miami',  label:'Aesthetic Intelligence Symposium (AIS) — Miami',        date:'Dec 5, 2026',  icon:'⭐' },
+];
+
+// AIS status state: eventKey + deliverableKey → status
+const AIS_STATUS = {};
+AIS_EVENTS.forEach(e => {
+  AIS_DELIVERABLES.forEach(d => {
+    AIS_STATUS[e.key + '_' + d.key] = 'tbc';
+  });
+});
+// AIS #1 — New Jersey statuses
+AIS_STATUS['nj_landing']  = 'done';
+AIS_STATUS['nj_form']     = 'done';
+AIS_STATUS['nj_eblast1']  = 'upcoming';
+AIS_STATUS['nj_eblast2']  = 'upcoming';
+AIS_STATUS['nj_eblast3']  = 'upcoming';
+AIS_STATUS['nj_sms']      = 'upcoming';
+
+const AIS_STATUS_CONFIG = {
+  tbc:      { label:'TBC',         cls:'ais-tbc',      dot:'#854d0e' },
+  wip:      { label:'In Progress', cls:'ais-wip',      dot:'#1d4ed8' },
+  upcoming: { label:'Upcoming',    cls:'ais-upcoming', dot:'var(--pending-text)' },
+  done:     { label:'Done',        cls:'ais-done',     dot:'var(--done-text)' },
+};
+
+const collapsedAIS = new Set(['nj','dallas','toronto','miami']);
+// AIS expected completion dates: eventKey + deliverableKey → date string
+const AIS_DATES = {};
+// initialise all to TBC
+['nj','dallas','toronto','miami'].forEach(e => {
+  ['landing','form','eblast1','eblast2','eblast3','sms'].forEach(d => {
+    AIS_DATES[e + '_' + d] = 'TBC';
+  });
+});
+// AIS #1 — New Jersey specific dates
+AIS_DATES['nj_landing']  = 'Jul 23';
+AIS_DATES['nj_form']     = 'Jul 23';
+AIS_DATES['nj_eblast1']  = 'Aug 5';
+AIS_DATES['nj_eblast2']  = 'Aug 20';
+AIS_DATES['nj_eblast3']  = 'Sep 9';
+AIS_DATES['nj_sms']      = 'Aug 28';
+let openAISPopup = null;
+
+function toggleAIS(key) {
+  if (collapsedAIS.has(key)) { collapsedAIS.delete(key); }
+  else { collapsedAIS.add(key); }
+  const header = document.getElementById('ais-header-' + key);
+  const body   = document.getElementById('ais-body-' + key);
+  const chev   = document.getElementById('ais-chev-' + key);
+  if (!header || !body || !chev) return;
+  const isOpen = collapsedAIS.has(key);
+  body.classList.toggle('open', isOpen);
+  header.classList.toggle('open', isOpen);
+  chev.style.transform = isOpen ? 'rotate(-180deg)' : 'rotate(0deg)';
+}
+
+function startAISDateEdit(stKey, el) {
+  const field = document.getElementById('ais-datefld-' + stKey);
+  const input = document.getElementById('ais-dateinput-' + stKey);
+  if (!field || !input) return;
+  input.value = AIS_DATES[stKey] === 'TBC' ? '' : AIS_DATES[stKey];
+  field.style.display = 'none';
+  input.style.display = 'inline-block';
+  input.focus(); input.select();
+}
+
+function saveAISDate(stKey) {
+  const input = document.getElementById('ais-dateinput-' + stKey);
+  const field = document.getElementById('ais-datefld-' + stKey);
+  const text  = document.getElementById('ais-datetext-' + stKey);
+  if (!input) return;
+  const val = input.value.trim() || 'TBC';
+  AIS_DATES[stKey] = val;
+  if (text) text.textContent = val;
+  if (field) field.style.display = 'inline-flex';
+  if (input) input.style.display = 'none';
+}
+
+function toggleAISPopup(eventKey, delivKey, e) {
+  e.stopPropagation();
+  const popupId = 'ais-popup-' + eventKey + '_' + delivKey;
+  if (openAISPopup && openAISPopup !== popupId) {
+    const prev = document.getElementById(openAISPopup);
+    if (prev) prev.classList.remove('open');
+  }
+  const popup = document.getElementById(popupId);
+  if (!popup) return;
+  const isOpen = popup.classList.contains('open');
+  if (isOpen) { popup.classList.remove('open'); openAISPopup = null; }
+  else { popup.classList.add('open'); openAISPopup = popupId; }
+}
+
+function setAISStatus(eventKey, delivKey, status) {
+  AIS_STATUS[eventKey + '_' + delivKey] = status;
+  const popupId = 'ais-popup-' + eventKey + '_' + delivKey;
+  const popup = document.getElementById(popupId);
+  if (popup) popup.classList.remove('open');
+  openAISPopup = null;
+  // Update badge without full re-render
+  const badgeId = 'ais-badge-' + eventKey + '_' + delivKey;
+  const badge = document.getElementById(badgeId);
+  if (badge) {
+    const cfg = AIS_STATUS_CONFIG[status];
+    badge.className = 'ais-badge ' + cfg.cls;
+    badge.innerHTML = `<span class="bdot" style="background:${cfg.dot}"></span>${cfg.label}<span class="chev">▾</span>`;
+  }
+  // Update progress count
+  updateAISProgress(eventKey);
+}
+
+function updateAISProgress(eventKey) {
+  const doneCount = AIS_DELIVERABLES.filter(d => AIS_STATUS[eventKey + '_' + d.key] === 'done').length;
+  const total = AIS_DELIVERABLES.length;
+  const el = document.getElementById('ais-progress-' + eventKey);
+  if (el) el.textContent = doneCount + '/' + total + ' done';
+}
+
+function renderAIS(main) {
+  const statusOptions = Object.entries(AIS_STATUS_CONFIG).map(([key, cfg]) =>
+    `<div class="ais-popup-option" onclick="setAISStatus('EVENT_KEY','DELIV_KEY','${key}')">
+      <span class="bdot" style="width:7px;height:7px;border-radius:50%;background:${cfg.dot};flex-shrink:0;"></span>${cfg.label}
+    </div>`
+  ).join('');
+
+  const introHTML = '';
+
+  const eventsHTML = AIS_EVENTS.map(event => {
+    const doneCount = AIS_DELIVERABLES.filter(d => AIS_STATUS[event.key + '_' + d.key] === 'done').length;
+    const isOpen = collapsedAIS.has(event.key);
+
+    const rowsHTML = [...AIS_DELIVERABLES].sort((a, b) => {
+      const da = AIS_DATES[event.key + '_' + a.key] || 'ZZZ';
+      const db = AIS_DATES[event.key + '_' + b.key] || 'ZZZ';
+      const monthMap = {Jan:1,Feb:2,Mar:3,Apr:4,May:5,Jun:6,Jul:7,Aug:8,Sep:9,Oct:10,Nov:11,Dec:12};
+      const parse = s => { const m = s.match(/([A-Za-z]+)\s+(\d+)/); return m && monthMap[m[1]] ? monthMap[m[1]]*100+parseInt(m[2]) : 9999; };
+      return parse(da) - parse(db);
+    }).map((d, i) => {
+      const stKey = event.key + '_' + d.key;
+      const status = AIS_STATUS[stKey];
+      const cfg = AIS_STATUS_CONFIG[status];
+      const opts = Object.entries(AIS_STATUS_CONFIG).map(([k, c]) =>
+        `<div class="ais-popup-option" onclick="setAISStatus('${event.key}','${d.key}','${k}')">
+          <span class="bdot" style="width:7px;height:7px;border-radius:50%;background:${c.dot};flex-shrink:0;display:inline-block;margin-right:2px;"></span>${c.label}
+        </div>`
+      ).join('');
+
+      const dateVal = AIS_DATES[stKey] || 'TBC';
+      return `<div class="ais-row">
+        <span class="ais-num">${i + 1}</span>
+        <span class="ais-deliverable">${d.label}</span>
+        <span class="ais-date-field" onclick="startAISDateEdit('${stKey}',this)" title="Click to set expected date" id="ais-datefld-${stKey}">
+          ${CAL}<span id="ais-datetext-${stKey}">${dateVal}</span>
+        </span>
+        <input type="text" id="ais-dateinput-${stKey}" placeholder="e.g. Aug 1"
+          style="display:none;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--purple);border:1px solid var(--border);border-radius:8px;padding:3px 8px;background:var(--grad-soft);outline:none;width:100px;"
+          onblur="saveAISDate('${stKey}')" onkeydown="if(event.key==='Enter'||event.key==='Escape')saveAISDate('${stKey}')" />
+        <div class="ais-status-wrapper">
+          <span class="ais-badge ${cfg.cls}" id="ais-badge-${stKey}" onclick="toggleAISPopup('${event.key}','${d.key}',event)">
+            <span class="bdot" style="background:${cfg.dot}"></span>${cfg.label}<span class="chev">▾</span>
+          </span>
+          <div class="ais-popup" id="ais-popup-${stKey}">${opts}</div>
+        </div>
+      </div>`;
+    }).join('');
+
+    return `<section class="ais-section">
+      <div class="ais-header${isOpen ? ' open' : ''}" id="ais-header-${event.key}" onclick="toggleAIS('${event.key}')">
+        <div class="ais-icon">${event.icon}</div>
+        <span class="ais-name">${event.label}</span>
+        <span class="ais-date">${event.date}</span>
+        <span class="ais-progress" id="ais-progress-${event.key}">${doneCount}/${AIS_DELIVERABLES.length} done</span>
+        <span class="ais-chevron" id="ais-chev-${event.key}" style="transform:rotate(${isOpen ? '-180deg' : '0deg'})">▾</span>
+      </div>
+      <div class="ais-body${isOpen ? ' open' : ''}" id="ais-body-${event.key}">${rowsHTML}</div>
+    </section>`;
+  }).join('');
+
+  main.innerHTML = introHTML + eventsHTML;
+
+  // Close popups on outside click
+  document.addEventListener('click', () => {
+    if (openAISPopup) {
+      const p = document.getElementById(openAISPopup);
+      if (p) p.classList.remove('open');
+      openAISPopup = null;
+    }
+  }, { once: true });
+}
+
+
+function setView(view, btn) {
+  currentView = view;
+  document.getElementById('tab-timeline').classList.toggle('active', view === 'timeline');
+  document.getElementById('tab-channel').classList.toggle('active', view === 'channel');
+  document.getElementById('tab-project').classList.toggle('active', view === 'project');
+  document.getElementById('tab-ais').classList.toggle('active', view === 'ais');
+  render();
+}
+
+// ── MONTH ACCORDION ──────────────────────────────────────────────────────
+function toggleMonth(m) {
+  if (collapsedMonths.has(m)) { collapsedMonths.delete(m); }
+  else { collapsedMonths.add(m); }
+  render();
+}
+
+// ── STATUS ───────────────────────────────────────────────────────────────
+function togglePopup(id, e) {
+  e.stopPropagation();
+  if (openPopup && openPopup !== id) closeAllPopups();
+  const p = document.getElementById('popup-' + id);
+  if (!p) return;
+  const isOpen = p.classList.contains('open');
+  if (isOpen) { p.classList.remove('open'); openPopup = null; }
+  else { p.classList.add('open'); openPopup = id; }
+}
+function closeAllPopups() {
+  document.querySelectorAll('.status-popup.open').forEach(p => p.classList.remove('open'));
+  openPopup = null;
+}
+document.addEventListener('click', closeAllPopups);
+
+function setStatus(id, s) {
+  const c = campaigns.find(x => x.id === id);
+  if (c) c.status = s;
+  closeAllPopups();
+  render();
+}
+
+// ── HERO DATE ────────────────────────────────────────────────────────────
+function openHeroPicker() {
+  const input = document.getElementById('hero-date-input');
+  if (!input) return;
+  try { input.showPicker(); } catch(e) { input.click(); }
+}
+
+function saveHeroDate(val) {
+  const formatted = fmtDate(val);
+  if (formatted) document.getElementById('updated-display').textContent = formatted;
+}
+
+// ── FILTERS ──────────────────────────────────────────────────────────────
+function setMonthFilter(val, btn) {
+  monthFilter = val;
+  ['f-all','f-feb','f-mar','f-apr','f-may','f-jun'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.remove('active');
+  });
+  btn.classList.add('active');
+  render();
+}
+function setSort(mode, btn) {
+  sortMode = mode;
+  document.getElementById('sort-month').classList.toggle('active', mode === 'month');
+  document.getElementById('sort-status').classList.toggle('active', mode === 'status');
+  render();
+}
+
+render();
+</script>
+</body>
+</html>
